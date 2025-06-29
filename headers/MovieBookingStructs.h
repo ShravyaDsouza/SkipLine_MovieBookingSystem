@@ -15,9 +15,14 @@ enum class BookingStatus { Booked, Cancelled, CheckedIn };
 enum class PaymentMethod { UPI, CreditCard, DebitCard, NetBanking, Cash };
 
 struct PromoCode {
-    string code;
-    float discountPercent;
-    bool isValid;
+    string code;                     
+    float discountPercent;          
+    bool isValid;                   
+    string createdByAdmin;          
+    time_t expiryDate;              
+    int usageLimit; 
+    float minPurchaseAmount; 
+    map<long, int> usagePerUser;   
 };
 
 struct MovieRating {
@@ -35,6 +40,9 @@ struct User {
     string hashPassword;
     bool isAdmin;
     vector<long> bookingHistory;
+    float walletBalance = 0.0f;     
+    int loyaltyPoints = 0;
+    string membershipLevel = "Regular"; 
 };
 
 struct MovieTheater {
@@ -60,6 +68,7 @@ struct Movie {
     string releaseDate;
     set<string> showTimings;
     map<string, int> seatsRemainingPerTiming;
+    map<string, float> seatTypeToPrice; 
     vector<string> theatersAvailable;
     MovieRating ratingInfo;
 };
@@ -86,18 +95,37 @@ struct Booking {
     vector<string> seatNumbers;
     time_t bookingTime;
     string bookingDate;
-    string showTiming;
+    string showTime;
     string movieTheater;
     string transactionId;
     BookingStatus status;
     PaymentMethod paymentMethod;
     string appliedPromoCode;
+    bool usedWalletBalance = false; 
+    bool isRefunded = false;      
+    float refundAmount = 0.0f;    
+    string refundReason;          
+    time_t cancellationTime;   
 };
 
 struct Analytics {
     map<long, int> ticketsSoldPerMovie;
     map<string, float> revenuePerTheater;
     map<long, float> revenuePerMovie;
+};
+
+struct BookingLog {
+    long bookingId;
+    long userId;
+    string action;
+    time_t timestamp;
+};
+
+struct AdminLog {
+    long adminId;
+    string action;        
+    time_t timestamp;
+    string targetEntity;   
 };
 
 #endif 
