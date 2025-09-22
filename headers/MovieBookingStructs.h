@@ -18,7 +18,7 @@ struct PromoCode {
     string code;                     
     float discountPercent;          
     bool isValid;                   
-    string createdByAdmin;          
+    time_t createdWhen;          
     time_t expiryDate;              
     int usageLimit; 
     float minPurchaseAmount; 
@@ -52,6 +52,7 @@ struct MovieTheater {
     int totalSeats;
     vector<string> seatLayout;
     map<string, map<string, bool>> seatAvailabilityPerShowTime;
+    map<string, string> seatTypePerSeat;
     float serviceCharge = 30.0f;
 };
 
@@ -105,13 +106,14 @@ struct Booking {
     bool isRefunded = false;      
     float refundAmount = 0.0f;    
     string refundReason;          
-    time_t cancellationTime;   
+    time_t cancellationTime = 0;   
 };
 
 struct Analytics {
     map<long, int> ticketsSoldPerMovie;
     map<string, float> revenuePerTheater;
     map<long, float> revenuePerMovie;
+    map<time_t, int> bookingsPerDay;
 };
 
 struct BookingLog {

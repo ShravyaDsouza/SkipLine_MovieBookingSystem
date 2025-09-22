@@ -14,6 +14,8 @@ public:
     bool isEmailRegistered(const std::string& email);
     User* getUserById(long userId);
     std::vector<User> getAllUsers() const;
+    void viewUserBookingHistory();
+    void deleteUser(long userId);
 
 private:
     std::vector<User> users;

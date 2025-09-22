@@ -1,0 +1,9 @@
+[2025-07-01 22:33:23] Login Failed for email: shrav@gmail.com [Attempt 1]
+[2025-07-01 22:33:28] Login Failed for email: shrav@gmail.com [Attempt 2]
+[2025-07-01 22:33:29] Login Failed for email: shrav@gmail.com [Attempt 3]
+[2025-07-01 22:33:29] ALERT: Repeated login failures for email: shrav@gmail.com
+[2025-07-01 22:34:11] Login Failed for email: shrav@gmail.c [Attempt 1]
+[2025-07-01 22:34:12] Login Failed for email: shrav@gmail.c [Attempt 2]
+[2025-07-01 22:34:13] Login Failed for email: shrav@gmail.c [Attempt 3]
+[2025-07-01 22:34:13] ALERT: Repeated login failures for email: shrav@gmail.c
+[2025-07-01 22:39:41] Login Success: s@gmail.com

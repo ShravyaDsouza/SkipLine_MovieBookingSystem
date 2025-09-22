@@ -1,0 +1,6 @@
+1000,admin,9920180233,Shravya,dsouza@gmail.com,root,1
+1001,admin,4567891023,Sarrah,saarah@gmail.com,root,1
+1002,user,123123,Shravya,sf@gmail.com,root,0
+1000,admin,1234,Shravya,sd,root,1
+1000,admin,1222,Shravya,sad,root,1
+1000,user,9920180233,Shravya,s@gmail.com,5292198911717408104,0

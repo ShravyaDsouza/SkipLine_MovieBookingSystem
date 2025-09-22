@@ -1,5 +1,6 @@
-#include "headers/UserManager.h"
-#include "headers/FileIO.h"
+#include "UserManager.h"
+#include "FileIO.h"
+#include "Hasher.h"
 #include <iostream>
 
 UserManager::UserManager() {
@@ -25,8 +26,10 @@ bool UserManager::registerUser(const User& newUser) {
 }
 
 User* UserManager::loginUser(const std::string& email, const std::string& password) {
+    std::string hashedInput = hashPassword(password);
+
     for (auto& user : users) {
-        if (user.email == email && user.hashPassword == password) {
+        if (user.email == email && user.hashPassword == hashedInput) {
             return &user;
         }
     }
@@ -42,4 +45,18 @@ User* UserManager::getUserById(long userId) {
 
 std::vector<User> UserManager::getAllUsers() const {
     return users;
+}
+
+void UserManager::deleteUser(long userId) {
+    auto it = std::remove_if(users.begin(), users.end(), [userId](const User& u) {
+        return u.u_id == userId;
+    });
+
+    if (it != users.end()) {
+        users.erase(it, users.end());
+        saveUsersToFile(); 
+        std::cout << "User with ID " << userId << " deleted.\n";
+    } else {
+        std::cout << "User with ID " << userId << " not found.\n";
+    }
 }
